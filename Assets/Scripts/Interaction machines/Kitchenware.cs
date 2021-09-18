@@ -10,17 +10,24 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     protected Animator anim;
 
-    protected int maxIngredients = 0;
+    private int maxIngredients;
 
-    public void initialize()
+    public void initialize(int max)
     {
-        arrIngredients = new Ingredient[3];
+        arrIngredients = new Ingredient[10];
+
         isOpen = false;
+        maxIngredients = max;
+    }
+
+    public void SetPlaceholder(int index, GameObject obj)
+    {
+        Instantiate(arrIngredients[index].placeholder, obj.transform.position, Quaternion.identity);
     }
 
     public bool SetIngredient(int index, Ingredient ingredient)
     {
-        if(ingredient != null)
+        if(ingredient != null && arrayCount() < maxIngredients)
         {
             arrIngredients[index] = ingredient;
             return true;
@@ -43,28 +50,23 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         return isOpen;
     }
 
-    public bool isArrayEmpty(int min)
+    public int arrayCount()
     {
         int counter = 0;
         for (int i = 0; i < arrIngredients.Length; i++)
         {
-            if (arrIngredients[i] == null)
+            if (arrIngredients[i] != null)
             {
                 counter++;
             }
         }
-
-        if(counter < min)
-        {
-            return true;
-        }
-        return false;
+        return counter;
     }
     public void cookingTime()
     {
         float chance = 0;
         float multiplier = 0;
-        for (int i = 0; i < arrIngredients.Length; i++)
+        for (int i = 0; i < arrayCount(); i++)
         {
             chance += Random.Range(arrIngredients[i].deathChanceMin, arrIngredients[i].deathChanceMax);
 
@@ -80,7 +82,7 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         if (isOpen)
         {
             anim.SetBool("isOpen", false);
-            if (isArrayEmpty(2))//are there atleast 2 ingredients in array
+            if (arrayCount() >= 2)//are there atleast 2 ingredients in array
             {
                 cookingTime();
             }
@@ -92,7 +94,6 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         else
         {
             anim.SetBool("isOpen", true);
-
         }
         isOpen = !isOpen;
     }
