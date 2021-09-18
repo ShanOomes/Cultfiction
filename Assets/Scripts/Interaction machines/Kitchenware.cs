@@ -72,13 +72,18 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         for (int i = 0; i < arrayCount(); i++)
         {
             chance += Random.Range(arrIngredients[i].deathChanceMin, arrIngredients[i].deathChanceMax);
+            if (Random.Range(0f, 100f) > arrIngredients[i].failureRate)
+            {
+                multiplier += arrIngredients[i].multiplier;
+                GameManager.instance.displayText("Failed: " + arrIngredients[i].name);
+            }
 
-            multiplier += arrIngredients[i].multiplier;
         }
 
         float outcome = chance * multiplier;
-        print("Cooked: " + outcome);
-        StartCoroutine(clearPlaceholders());
+
+        GameManager.instance.End(outcome);
+        //StartCoroutine(clearPlaceholders());
     }
 
     public IEnumerator clearPlaceholders()
@@ -86,7 +91,10 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         yield return new WaitForSeconds(1.5f);
         for (int i = 0; i < arrHolders.Length; i++)
         {
-            Destroy(arrHolders[i].gameObject);
+            if(arrHolders != null)
+            {
+                Destroy(arrHolders[i].gameObject);
+            }
         }
     }
 
@@ -101,7 +109,7 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
             }
             else
             {
-                print("Not enough ingredients to cook");
+                GameManager.instance.displayText("Not enough ingredients to cook");
             }
         }
         else

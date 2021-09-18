@@ -30,7 +30,7 @@ public class Stove : Kitchenware
             Ingredient tmp = other.gameObject.GetComponent<IngredientDisplay>().ingredient;
             if (SetIngredient(index, tmp))//cache colliding ingredient into array
             {
-                print(GetIngredient(index).name +" Added to the stove");
+                GameManager.instance.displayText(GetIngredient(index).name + " Added to the stove");
                 other.gameObject.SetActive(false);
                 SetPlaceholder(index, arrPlacholders[index]);
                 index++;

@@ -10,6 +10,7 @@ public class Ingredient : ScriptableObject
     public float deathChanceMin;
     public float deathChanceMax;
 
+    public float failureRate;
     public float multiplier;
 
     public GameObject placeholder;

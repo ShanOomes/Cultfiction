@@ -15,5 +15,6 @@ MonoBehaviour:
   name: CubeCrystal
   deathChanceMin: 1
   deathChanceMax: 5
+  failureRate: 40
   multiplier: 2.5
-  placeholder: {fileID: 942047845792653608, guid: f14d1ac6dacfc0242bed295f91ed3591, type: 3}
+  placeholder: {fileID: 7791274298947156098, guid: 22f387ac66869934aac173de791e32d3, type: 3}

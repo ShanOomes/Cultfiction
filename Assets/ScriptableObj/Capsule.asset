@@ -15,5 +15,6 @@ MonoBehaviour:
   name: CapsulePowder
   deathChanceMin: 5
   deathChanceMax: 10
-  multiplier: 4.5
-  placeholder: {fileID: 4677379222891419799, guid: fbfe382c29a4ab547a520eb7084a534c, type: 3}
+  failureRate: 80
+  multiplier: 25
+  placeholder: {fileID: 5515960948975341885, guid: 61d6affc181fbcd47b5172a299d196cf, type: 3}
