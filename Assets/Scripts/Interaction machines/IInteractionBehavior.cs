@@ -6,5 +6,5 @@ public interface IInteractionBehavior
 {
     void interact();
 
-    void cookingTime(Ingredient[] ingredients);
+    void cookingTime();
 }

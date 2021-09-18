@@ -9,24 +9,20 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
     private bool isOpen;
 
     protected Animator anim;
-    // Start is called before the first frame update
-    void Start()
+
+    protected int maxIngredients = 0;
+
+    public void initialize()
     {
         arrIngredients = new Ingredient[3];
         isOpen = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public bool SetIngredient(int index, Ingredient ingredient)
     {
         if(ingredient != null)
         {
-            arrIngredients[0] = ingredient;
+            arrIngredients[index] = ingredient;
             return true;
         }
         return false;
@@ -46,33 +42,33 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
     {
         return isOpen;
     }
-    public bool IsArrNull()
+
+    public bool isArrayEmpty(int min)
     {
-        int nullCount = 0;
+        int counter = 0;
         for (int i = 0; i < arrIngredients.Length; i++)
         {
-            if(arrIngredients[i] == null)
+            if (arrIngredients[i] == null)
             {
-                nullCount++;
+                counter++;
             }
         }
 
-        if(nullCount > 0)
+        if(counter < min)
         {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
-
-    public void cookingTime(Ingredient[] ingredients)
+    public void cookingTime()
     {
         float chance = 0;
         float multiplier = 0;
-        for (int i = 0; i < ingredients.Length; i++)
+        for (int i = 0; i < arrIngredients.Length; i++)
         {
-            chance += Random.Range(ingredients[i].deathChanceMin, ingredients[i].deathChanceMax);
+            chance += Random.Range(arrIngredients[i].deathChanceMin, arrIngredients[i].deathChanceMax);
 
-            multiplier += ingredients[i].multiplier;
+            multiplier += arrIngredients[i].multiplier;
         }
 
         float outcome = chance * multiplier;
@@ -84,11 +80,9 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         if (isOpen)
         {
             anim.SetBool("isOpen", false);
-            print("Trying to cook");
-            if (arrIngredients[0] != null)//only call if all 3 ingredients are added to stove
+            if (isArrayEmpty(2))//are there atleast 2 ingredients in array
             {
-                print("Cooking");
-                cookingTime(arrIngredients);
+                cookingTime();
             }
             else
             {

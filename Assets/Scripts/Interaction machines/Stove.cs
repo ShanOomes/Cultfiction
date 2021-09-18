@@ -8,6 +8,7 @@ public class Stove : Kitchenware
     void Start()
     {
         anim = transform.GetChild(1).GetComponent<Animator>();
+        initialize();
     }
 
     // Update is called once per frame
@@ -19,7 +20,7 @@ public class Stove : Kitchenware
     private int index = 0;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject != null && index <= 3 && StoveOpened() == true)//check is not null, if index doesnt exceed limit of 3, if stove is open
+        if(other.gameObject != null && index <= 10  && StoveOpened() == true)//check is not null, if index doesnt exceed limit of 3, if stove is open
         {
             Ingredient tmp = other.gameObject.GetComponent<IngredientDisplay>().ingredient;
             if (SetIngredient(index, tmp))//cache colliding ingredient into array
