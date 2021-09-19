@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum intendedFor { Stove, Microwave, Mixer };
 [CreateAssetMenu(fileName = "New ingredient", menuName = "ingredient")]
 public class Ingredient : ScriptableObject
 {
@@ -14,4 +15,9 @@ public class Ingredient : ScriptableObject
     public float multiplier;
 
     public GameObject placeholder;
+
+    public intendedFor intended;
+
+    [HideInInspector]
+    public string type;
 }

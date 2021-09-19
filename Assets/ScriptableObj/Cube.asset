@@ -18,3 +18,4 @@ MonoBehaviour:
   failureRate: 40
   multiplier: 2.5
   placeholder: {fileID: 7791274298947156098, guid: 22f387ac66869934aac173de791e32d3, type: 3}
+  intended: 1

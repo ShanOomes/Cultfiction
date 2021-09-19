@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; set; }
 
     public GameObject video_ending;
-    public GameObject video_again;
 
     public TextMeshProUGUI textMeshPro;
     private void Awake()
@@ -43,7 +42,6 @@ public class GameManager : MonoBehaviour
         if (outcome < 480)
         {
             displayText("product failed, nothing happend");
-            video_again.GetComponent<VideoPlayer>().Play();
         }
         else if (outcome > 480 && outcome < 780)
         {

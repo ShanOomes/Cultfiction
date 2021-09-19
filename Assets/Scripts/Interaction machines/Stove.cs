@@ -25,16 +25,28 @@ public class Stove : Kitchenware
     private int index = 0;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject != null && StoveOpened() == true)//check is not null, if index doesnt exceed limit of 3, if stove is open
+        if(other.gameObject != null && StoveOpened() == true)//check is not null, if stove is open
         {
             Ingredient tmp = other.gameObject.GetComponent<IngredientDisplay>().ingredient;
-            if (SetIngredient(index, tmp))//cache colliding ingredient into array
+            if(tmp.intended.ToString() == "Stove")
             {
-                GameManager.instance.displayText(GetIngredient(index).name + " Added to the stove");
-                other.gameObject.SetActive(false);
-                SetPlaceholder(index, arrPlacholders[index]);
-                index++;
+                if (SetIngredient(index, tmp))//cache colliding ingredient into array
+                {
+                    GameManager.instance.displayText(GetIngredient(index).name + " added to the stove");
+                    other.gameObject.SetActive(false);
+                    SetPlaceholder(index, arrPlacholders[index]);
+                    index++;
+                }
+                else
+                {
+                    GameManager.instance.displayText(GetIngredient(index).name + " not added, not enough space");
+                }
             }
+            else
+            {
+                GameManager.instance.displayText(tmp.name + ", wrong kitchenware");
+            }
+
         }
     }
 }
