@@ -13,7 +13,7 @@ public class Stove : Kitchenware
         anim = transform.GetChild(0).GetComponent<Animator>();
         volume = 3;
 
-        initialize(volume);
+        initialize(volume, true);
     }
 
     // Update is called once per frame

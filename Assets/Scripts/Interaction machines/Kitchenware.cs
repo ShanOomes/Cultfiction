@@ -14,13 +14,15 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     private int maxIngredients;
 
-    public void initialize(int max)
+    private bool isCookingMachine;
+    public void initialize(int max, bool typeMachine)
     {
         arrIngredients = new Ingredient[10];
         arrHolders = new GameObject[3];
 
         isOpen = false;
         maxIngredients = max;
+        isCookingMachine = typeMachine;
     }
 
     public void SetPlaceholder(int index, GameObject obj)
@@ -103,13 +105,16 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         if (isOpen)
         {
             anim.SetBool("isOpen", false);
-            if (arrayCount() >= 2)//are there atleast 2 ingredients in array
+            if (isCookingMachine)
             {
-                cookingTime();
-            }
-            else
-            {
-                GameManager.instance.displayText("Not enough ingredients to cook");
+                if (arrayCount() >= 2)//are there atleast 2 ingredients in array
+                {
+                    cookingTime();
+                }
+                else
+                {
+                    GameManager.instance.displayText("Not enough ingredients to cook");
+                }
             }
         }
         else
