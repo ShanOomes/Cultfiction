@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject progressBar;
     public TextMeshProUGUI durationText;
     private Image loadingBar;
-    public float duration;
+    private float currentTime;
+
 
     private void Awake()
     {
@@ -50,16 +51,12 @@ public class GameManager : MonoBehaviour
     private IEnumerator Timer(float duration)
     {
         progressBar.SetActive(true);
-        float startTime = Time.time;
-        float time = duration;
-        float value = 0;
-
-        while(Time.time - startTime < duration)
+        currentTime = duration;
+        while(currentTime > 0)
         {
-            time -= Time.deltaTime;
-            value = time / duration;
-            loadingBar.fillAmount = value;
-            durationText.text = Mathf.Round(time).ToString();
+            currentTime -= Time.deltaTime;
+            loadingBar.fillAmount = currentTime / duration;
+            durationText.text = currentTime.ToString("F0");
             yield return null;
         }
         progressBar.SetActive(false);
