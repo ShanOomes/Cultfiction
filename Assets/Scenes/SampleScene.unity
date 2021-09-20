@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38356692, g: 0.8392157, b: 0.31372553, a: 1}
+  m_Color: {r: 0.8392157, g: 0.31372553, b: 0.3335108, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -1464,7 +1464,6 @@ MonoBehaviour:
   textMeshPro: {fileID: 610069396}
   progressBar: {fileID: 2031066675}
   durationText: {fileID: 1305871140}
-  duration: 10
 --- !u!1 &1906025953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,7 +1643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90588236, g: 0.42352942, b: 0.45466456, a: 1}
+  m_Color: {r: 0.42956838, g: 0.90588236, b: 0.42352942, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
