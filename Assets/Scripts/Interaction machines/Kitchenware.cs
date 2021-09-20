@@ -15,6 +15,8 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
     private int maxIngredients;
 
     private bool isCookingMachine;
+
+    public float cookingDuration;
     public void initialize(int max, bool typeMachine)
     {
         arrIngredients = new Ingredient[10];
@@ -83,8 +85,9 @@ public class Kitchenware : MonoBehaviour, IInteractionBehavior
         }
 
         float outcome = chance * multiplier;
-
-        GameManager.instance.End(outcome);
+        print("Cooking Timer");
+        GameManager.instance.StartTimer(cookingDuration);
+        //GameManager.instance.End(outcome);
         //StartCoroutine(clearPlaceholders());
     }
 
