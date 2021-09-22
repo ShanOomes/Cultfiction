@@ -71,12 +71,9 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     public void enhanceProduct()
     {
-        float tmp;
-
-        tmp = ingredients[0].deathChanceMax;
-        tmp = tmp * 25;
+        ingredients[0].multiplier = ingredients[0].multiplier * 8;
         GameManager.instance.StartTimer(cookingDuration);
-        print("enhance" + tmp);
+        print("enhance" + ingredients[0].multiplier);
     }
 
     private void clearPlaceholders()

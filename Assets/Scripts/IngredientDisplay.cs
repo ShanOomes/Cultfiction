@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class IngredientDisplay : MonoBehaviour
 {
-    public Ingredient ingredient;
+    //public Ingredient ingredient;
 
     // Start is called before the first frame update
     void Start()
     {
-        Kitchenware k = GetComponent<Kitchenware>();
+        /*Kitchenware k = GetComponent<Kitchenware>();
         if(k is Microwave)
         {
 
-        }
+        }*/
     }
 
 }

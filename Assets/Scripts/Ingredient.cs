@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum intendedFor { Stove, Microwave, Mixer, All };
-[CreateAssetMenu(fileName = "New ingredient", menuName = "ingredient")]
-public class Ingredient : ScriptableObject
+public abstract class Ingredient
 {
-    public new string name;
+    private string name;
 
-    public float deathChanceMin;
-    public float deathChanceMax;
+    private float deathChanceMin;
+    private float deathChanceMax;
 
-    public float failureRate;
-    public float multiplier;
+    private float failureRate;
+    private float multiplier;
 
-    public GameObject placeholder;
+    private GameObject placeholder;
 
-    public intendedFor intended;
+    private intendedFor intended;
 
-    [HideInInspector]
-    public string type;
+    //Properties
+    public string Name { get { return this.name; } set { this.name  = value; } }
+    public float Weight { get { return this.weight; } set { this.weight = value; } }
 }
