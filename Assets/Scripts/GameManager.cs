@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI durationText;
     private Image loadingBar;
     private float currentTime;
+    private float result;
 
+    public bool isCooking;
 
     private void Awake()
     {
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         loadingBar = progressBar.transform.GetChild(0).GetComponent<Image>();
+        isCooking = false;
     }
 
     // Update is called once per frame
@@ -43,9 +46,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StartTimer(float duration)
+    public void StartTimer(float duration, float outcome = 0)
     {
         StartCoroutine(Timer(duration));//TO DO check if coroutine is done
+        result = outcome;
+        isCooking = true;
     }
 
     private IEnumerator Timer(float duration)
@@ -60,20 +65,22 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         progressBar.SetActive(false);
+        End();
+        isCooking = false;
     }
 
-    public void End(float outcome)
+    private void End()
     {
-        print("Cooked: " + outcome);
-        if (outcome < 480)
+        print("Cooked: " + result);
+        if (result < 480)
         {
             displayText("product failed, nothing happend");
         }
-        else if (outcome > 480 && outcome < 780)
+        else if (result > 480 && result < 780)
         {
-            video_ending.GetComponent<VideoPlayer>().Play();
+            //video_ending.GetComponent<VideoPlayer>().Play();
         }
-        else if (outcome > 780)
+        else if (result > 780)
         {
             displayText("Deadly product, Game over");
         }

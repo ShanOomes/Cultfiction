@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum intendedFor { Stove, Microwave, Mixer };
+public enum intendedFor { Stove, Microwave, Mixer, All };
 [CreateAssetMenu(fileName = "New ingredient", menuName = "ingredient")]
 public class Ingredient : ScriptableObject
 {

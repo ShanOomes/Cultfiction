@@ -12,7 +12,6 @@ public class Fridge : Kitchenware
     void Start()
     {
         anim = GetComponent<Animator>();
-        initialize(3, false);
 
         if(arrIngredients.Length != 0)
         {

@@ -2,127 +2,112 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kitchenware : MonoBehaviour, IInteractionBehavior
+public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 {
-    private Ingredient[] arrIngredients;
+    private List<Ingredient> ingredients = new List<Ingredient>();
 
-    private GameObject[] arrHolders;
+    private List<GameObject> placeholders = new List<GameObject>(); 
 
-    private bool isOpen;
+    private bool isOpen = false;
 
     protected Animator anim;
 
-    private int maxIngredients;
-
-    private bool isCookingMachine;
+    protected int maxIngredients;
 
     public float cookingDuration;
-    public void initialize(int max, bool typeMachine)
-    {
-        arrIngredients = new Ingredient[10];
-        arrHolders = new GameObject[3];
 
-        isOpen = false;
-        maxIngredients = max;
-        isCookingMachine = typeMachine;
-    }
-
-    public void SetPlaceholder(int index, GameObject obj)
+    public bool SetIngredient(Ingredient ingredient, Transform location)
     {
-        arrHolders[index] = Instantiate(arrIngredients[index].placeholder, obj.transform.position, Quaternion.identity);
-    }
-
-    public bool SetIngredient(int index, Ingredient ingredient)
-    {
-        if(ingredient != null && arrayCount() < maxIngredients)
+        if(ingredient != null && ingredients.Count < maxIngredients)
         {
-            arrIngredients[index] = ingredient;
+            ingredients.Add(ingredient);
+            placeholders.Add(Instantiate(ingredient.placeholder, location.transform.position, Quaternion.identity));
             return true;
         }
         return false;
     }
 
-    public Ingredient GetIngredient(int index)
+    public int AmountOfIngredients()
     {
-        return arrIngredients[index];
+        return ingredients.Count;
     }
 
-    public Ingredient[] GetIngredients()
+    public bool IsMaxFilled()
     {
-        return arrIngredients;
+        if(ingredients.Count < maxIngredients)
+        {
+            return true;
+        }
+        return false;
+    }
+    public bool ContainsIngredient(Ingredient ingredient)
+    {
+        return ingredients.Contains(ingredient);
     }
 
-    public bool StoveOpened()
+    public bool kitchenWareOpened()
     {
         return isOpen;
     }
 
-    public int arrayCount()
-    {
-        int counter = 0;
-        for (int i = 0; i < arrIngredients.Length; i++)
-        {
-            if (arrIngredients[i] != null)
-            {
-                counter++;
-            }
-        }
-        return counter;
-    }
     public void cookingTime()
     {
         float chance = 0;
         float multiplier = 0;
-        for (int i = 0; i < arrayCount(); i++)
+        for (int i = 0; i < ingredients.Count; i++)
         {
-            chance += Random.Range(arrIngredients[i].deathChanceMin, arrIngredients[i].deathChanceMax);
-            if (Random.Range(0f, 100f) > arrIngredients[i].failureRate)
+            chance += Random.Range(ingredients[i].deathChanceMin, ingredients[i].deathChanceMax);
+            if (Random.Range(0f, 100f) > ingredients[i].failureRate)
             {
-                multiplier += arrIngredients[i].multiplier;
-                GameManager.instance.displayText("Failed: " + arrIngredients[i].name);
+                multiplier += ingredients[i].multiplier;
+                GameManager.instance.displayText("Failed: " + ingredients[i].name);
             }
-
         }
 
         float outcome = chance * multiplier;
-        print("Cooking Timer");
-        GameManager.instance.StartTimer(cookingDuration);
-        //GameManager.instance.End(outcome);
-        //StartCoroutine(clearPlaceholders());
+        GameManager.instance.StartTimer(cookingDuration, outcome);
+        //clearPlaceholders();
     }
 
-    public IEnumerator clearPlaceholders()
+    public void enhanceProduct()
     {
-        yield return new WaitForSeconds(1.5f);
-        for (int i = 0; i < arrHolders.Length; i++)
+        float tmp;
+
+        tmp = ingredients[0].deathChanceMax;
+        tmp = tmp * 25;
+        GameManager.instance.StartTimer(cookingDuration);
+        print("enhance" + tmp);
+    }
+
+    private void clearPlaceholders()
+    {
+        for (int i = 0; i < placeholders.Count; i++)
         {
-            if(arrHolders != null)
+            if(placeholders != null)
             {
-                Destroy(arrHolders[i].gameObject);
+                Destroy(placeholders[i].gameObject);
             }
         }
+    }
+
+    public virtual void Action() { 
+    
     }
 
     public void interact()
     {
-        if (isOpen)
+        if(GameManager.instance.isCooking == false)
         {
-            anim.SetBool("isOpen", false);
-            if (isCookingMachine)
+            if (isOpen)
             {
-                if (arrayCount() >= 2)//are there atleast 2 ingredients in array
-                {
-                    cookingTime();
-                }
-                else
-                {
-                    GameManager.instance.displayText("Not enough ingredients to cook");
-                }
+                anim.SetBool("isOpen", false);
+
+                Action();
             }
-        }
-        else
-        {
-            anim.SetBool("isOpen", true);
+            else
+            {
+                anim.SetBool("isOpen", true);
+            }
         }
         isOpen = !isOpen;
     }

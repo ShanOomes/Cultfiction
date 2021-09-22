@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Stove : Kitchenware
 {
-    private int volume;
+    public List<Transform> locations = new List<Transform>();
 
-    public GameObject[] arrPlacholders;
     // Start is called before the first frame update
     void Start()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
-        volume = 3;
-
-        initialize(volume, true);
+        maxIngredients = 3;
     }
 
     // Update is called once per frame
@@ -22,29 +19,48 @@ public class Stove : Kitchenware
 
     }
 
-    private int index = 0;
+    public override void Action()
+    {
+        if (AmountOfIngredients() >= 2)//are there atleast 2 ingredients in array
+        {
+            cookingTime();
+            GameManager.instance.displayText("Cooking...");
+        }
+        else
+        {
+            GameManager.instance.displayText("Not enough ingredients to cook");
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject != null && StoveOpened() == true)//check is not null, if stove is open
+        if(other.gameObject != null && kitchenWareOpened() == true)//check is not null, if stove is open
         {
-            Ingredient tmp = other.gameObject.GetComponent<IngredientDisplay>().ingredient;
-            if(tmp.intended.ToString() == "Stove")
+            Ingredient ingredient = other.gameObject.GetComponent<IngredientDisplay>().ingredient;
+            if(ingredient.intended.ToString() == "Stove")
             {
-                if (SetIngredient(index, tmp))//cache colliding ingredient into array
+                if (IsMaxFilled())
                 {
-                    GameManager.instance.displayText(GetIngredient(index).name + " added to the stove");
-                    other.gameObject.SetActive(false);
-                    SetPlaceholder(index, arrPlacholders[index]);
-                    index++;
+                    if (SetIngredient(ingredient, locations[AmountOfIngredients()]))//cache colliding ingredient into array
+                    {
+                        GameManager.instance.displayText(ingredient.name + " added to the stove");
+                        other.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        GameManager.instance.displayText(ingredient.name + "not added, not enough space");
+                    }
                 }
                 else
                 {
-                    GameManager.instance.displayText(GetIngredient(index).name + " not added, not enough space");
+                    GameManager.instance.displayText(ingredient.name + "not added, is full!");
                 }
+
             }
             else
             {
-                GameManager.instance.displayText(tmp.name + ", wrong kitchenware");
+                GameManager.instance.displayText(ingredient.name + ", wrong kitchenware");
             }
 
         }
