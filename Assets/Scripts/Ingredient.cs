@@ -17,7 +17,7 @@ public class Ingredient : MonoBehaviour
     public Type type;
     //Properties
     public string Name { get { return this.name; } set { this.name  = value; } }
-    public float DeathChanceMax { get { return this.deathChance; } }
+    public float DeathChance { get { return this.deathChance; } }
     public float FailureRate { get { return this.failureRate; } }
     public float Multiplier { get { return this.multiplier; } set { this.multiplier = value; } }
     public GameObject Placeholder { get { return this.placeholder; } set { this.placeholder = value; } }

@@ -57,7 +57,7 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
         for (int i = 0; i < ingredients.Count; i++)
         {
             //chance += Random.Range(ingredients[i].DeathChanceMin, ingredients[i].DeathChanceMax);
-            if (Random.Range(0f, 100f) > ingredients[i].FailureRate)
+            if (Random.Range(0f, 100f) < ingredients[i].FailureRate)
             {
                 multiplier += ingredients[i].Multiplier;
                 GameManager.instance.displayText("Failed: " + ingredients[i].Name);
@@ -71,6 +71,10 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     public void enhanceProduct()
     {
+        if(Random.Range(0f,100f) > ingredients[0].deathChance)
+        {
+
+        }
         ingredients[0].Multiplier = ingredients[0].Multiplier * 8;
         GameManager.instance.StartTimer(cookingDuration);
         print("enhance" + ingredients[0].Multiplier);
