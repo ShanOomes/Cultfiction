@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 public class Fridge : Kitchenware
 {
-    public GameObject[] arrIngredients;
+    public List<GameObject> listIngredients = new List<GameObject>();
 
     public Transform[] holders;
+
+    public int amount;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
 
-        if(arrIngredients.Length != 0)
+        if(listIngredients.Count != 0)
         {
-            for (int i = 0; i < arrIngredients.Length; i++)
+            for (int i = 0; i < amount; i++)
             {
-                int randomIndex = Random.Range(0, arrIngredients.Length);
-                Instantiate(arrIngredients[randomIndex].gameObject, holders[i].transform.position, Quaternion.identity);
+                int randomIndex = Random.Range(0, listIngredients.Count);
+                GameObject obj = listIngredients[randomIndex].gameObject;
+                
+                //Ingredient ing = obj.AddComponent<Ingredient>();
+                //ing.Set("Test", 10f, 20f, 5f, 15, test, Type.Stove);
+
+                Instantiate(obj, holders[i].transform.position, Quaternion.identity);
             }
         }
     }

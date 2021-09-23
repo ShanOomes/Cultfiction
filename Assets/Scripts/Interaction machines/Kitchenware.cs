@@ -21,7 +21,7 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
         if(ingredient != null && ingredients.Count < maxIngredients)
         {
             ingredients.Add(ingredient);
-            placeholders.Add(Instantiate(ingredient.placeholder, location.transform.position, Quaternion.identity));
+            placeholders.Add(Instantiate(ingredient.Placeholder, location.transform.position, Quaternion.identity));
             return true;
         }
         return false;
@@ -56,28 +56,30 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
         float multiplier = 0;
         for (int i = 0; i < ingredients.Count; i++)
         {
-            chance += Random.Range(ingredients[i].deathChanceMin, ingredients[i].deathChanceMax);
-            if (Random.Range(0f, 100f) > ingredients[i].failureRate)
+            //chance += Random.Range(ingredients[i].DeathChanceMin, ingredients[i].DeathChanceMax);
+            if (Random.Range(0f, 100f) > ingredients[i].FailureRate)
             {
-                multiplier += ingredients[i].multiplier;
-                GameManager.instance.displayText("Failed: " + ingredients[i].name);
+                multiplier += ingredients[i].Multiplier;
+                GameManager.instance.displayText("Failed: " + ingredients[i].Name);
             }
         }
 
         float outcome = chance * multiplier;
         GameManager.instance.StartTimer(cookingDuration, outcome);
-        //clearPlaceholders();
+        StartCoroutine(clearPlaceholders());
     }
 
     public void enhanceProduct()
     {
-        ingredients[0].multiplier = ingredients[0].multiplier * 8;
+        ingredients[0].Multiplier = ingredients[0].Multiplier * 8;
         GameManager.instance.StartTimer(cookingDuration);
-        print("enhance" + ingredients[0].multiplier);
+        print("enhance" + ingredients[0].Multiplier);
+        StartCoroutine(clearPlaceholders());
     }
 
-    private void clearPlaceholders()
+    private IEnumerator clearPlaceholders()
     {
+        yield return new WaitForSeconds(cookingDuration);
         for (int i = 0; i < placeholders.Count; i++)
         {
             if(placeholders != null)
@@ -85,6 +87,18 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
                 Destroy(placeholders[i].gameObject);
             }
         }
+        for (int i = 0; i < ingredients.Count; i++)
+        {
+            if(ingredients[i] != null)
+            {
+                GameObject obj = ingredients[i].gameObject;
+                obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 0.5f, obj.transform.position.z);
+                obj.GetComponent<Ingredient>().type = Type.Stove;
+                obj.SetActive(true);
+            }
+        }
+        placeholders.Clear();
+        ingredients.Clear();
     }
 
     public virtual void Action() { 

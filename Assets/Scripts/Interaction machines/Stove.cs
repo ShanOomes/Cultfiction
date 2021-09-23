@@ -37,30 +37,30 @@ public class Stove : Kitchenware
     {
         if(other.gameObject != null && kitchenWareOpened() == true)//check is not null, if stove is open
         {
-            Ingredient ingredient = other.gameObject.GetComponent<IngredientDisplay>().ingredient;
-            if(ingredient.intended.ToString() == "Stove")
+            Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
+            if(ingredient.type.ToString() == "Stove")
             {
                 if (IsMaxFilled())
                 {
                     if (SetIngredient(ingredient, locations[AmountOfIngredients()]))//cache colliding ingredient into array
                     {
-                        GameManager.instance.displayText(ingredient.name + " added to the stove");
+                        GameManager.instance.displayText(ingredient.Name + " added to the stove");
                         other.gameObject.SetActive(false);
                     }
                     else
                     {
-                        GameManager.instance.displayText(ingredient.name + "not added, not enough space");
+                        GameManager.instance.displayText(ingredient.Name + "not added, not enough space");
                     }
                 }
                 else
                 {
-                    GameManager.instance.displayText(ingredient.name + "not added, is full!");
+                    GameManager.instance.displayText(ingredient.Name + "not added, is full!");
                 }
 
             }
             else
             {
-                GameManager.instance.displayText(ingredient.name + ", wrong kitchenware");
+                GameManager.instance.displayText(ingredient.Name + ", wrong kitchenware");
             }
 
         }

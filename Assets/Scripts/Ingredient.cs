@@ -2,22 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum intendedFor { Stove, Microwave, Mixer, All };
-public abstract class Ingredient
+public enum Type { Stove, Microwave, Mixer, All };
+public class Ingredient : MonoBehaviour
 {
-    private string name;
+    public string name;
 
-    private float deathChanceMin;
-    private float deathChanceMax;
+    public float deathChance;
 
-    private float failureRate;
-    private float multiplier;
+    public float failureRate;
+    public float multiplier;
 
-    private GameObject placeholder;
+    public GameObject placeholder;
 
-    private intendedFor intended;
-
+    public Type type;
     //Properties
     public string Name { get { return this.name; } set { this.name  = value; } }
-    public float Weight { get { return this.weight; } set { this.weight = value; } }
+    public float DeathChanceMax { get { return this.deathChance; } }
+    public float FailureRate { get { return this.failureRate; } }
+    public float Multiplier { get { return this.multiplier; } set { this.multiplier = value; } }
+    public GameObject Placeholder { get { return this.placeholder; } set { this.placeholder = value; } }
+    public Type Type { get { return this.type; } set { this.type = value; } }
+
+    public Ingredient()
+    {
+        name = "Default";
+
+        deathChance = 0;
+
+        failureRate = 0;
+        multiplier = 1;
+
+        placeholder = null;
+        type = Type.All;
+    }
+
+    public void Set(string name, float deathChance, float failureRate, float multiplier, GameObject placeholder, Type type)
+    {
+        this.name = name;
+
+        this.deathChance = deathChance;
+
+        this.failureRate = failureRate;
+        this.multiplier = multiplier;
+
+        this.placeholder = placeholder;
+        this.type = type;
+    }
 }

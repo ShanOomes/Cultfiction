@@ -1077,6 +1077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mixer
       objectReference: {fileID: 0}
+    - target: {fileID: 5768377409343704515, guid: 0bd166eac535dfd43bc28b43190b289a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6577142344966051705, guid: 0bd166eac535dfd43bc28b43190b289a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2849,11 +2853,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookingDuration: 0
-  arrIngredients:
+  listIngredients:
   - {fileID: 693703580425167332, guid: 06d2a454f9806a345b722c519d92ac2e, type: 3}
-  - {fileID: 693703580425167332, guid: 06d2a454f9806a345b722c519d92ac2e, type: 3}
-  - {fileID: 693703580425167332, guid: 06d2a454f9806a345b722c519d92ac2e, type: 3}
-  - {fileID: 693703580425167332, guid: 06d2a454f9806a345b722c519d92ac2e, type: 3}
+  - {fileID: 1685155687460864933, guid: 637693e838e637b4588b1af8a436adea, type: 3}
   holders:
   - {fileID: 857089900}
   - {fileID: 1503263639}
@@ -2862,6 +2864,7 @@ MonoBehaviour:
   - {fileID: 551794829}
   - {fileID: 642055468}
   - {fileID: 1721816240}
+  amount: 3
 --- !u!1 &6129929430058719511
 GameObject:
   m_ObjectHideFlags: 0
