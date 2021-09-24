@@ -71,9 +71,10 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     public void enhanceProduct()
     {
-        if(Random.Range(0f,100f) > ingredients[0].deathChance)
+        GameManager.instance.Explosion(this.gameObject.transform);
+        if (Random.Range(0f,100f) > ingredients[0].deathChance)
         {
-
+            
         }
         ingredients[0].Multiplier = ingredients[0].Multiplier * 8;
         GameManager.instance.StartTimer(cookingDuration);

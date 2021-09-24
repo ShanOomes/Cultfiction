@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private float currentTime;
     private float result;
 
+    public GameObject explosion;
     public bool isCooking;
 
     private void Awake()
@@ -84,6 +85,11 @@ public class GameManager : MonoBehaviour
         {
             displayText("Deadly product, Game over");
         }
+    }
+
+    public void Explosion(Transform pos)
+    {
+        Instantiate(explosion, pos.transform.position, Quaternion.identity);
     }
 
     public void displayText(string text)
