@@ -32,7 +32,7 @@ public class TraumaInducer : MonoBehaviour
             receiver.InduceStress(stress);
         }
         yield return new WaitForSeconds(1);
-        GameManager.instance.Death();
+        GameManager.instance.FailedPanel();
     }
 
     /* Search for all the particle system in the game objects children */

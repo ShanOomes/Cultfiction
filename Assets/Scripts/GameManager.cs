@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -50,14 +51,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StartTimer(float duration, float outcome = 0)
+    public void StartTimer(float duration, bool isStove, float outcome = 0)
     {
-        StartCoroutine(Timer(duration));//TO DO check if coroutine is done
+        StartCoroutine(Timer(duration, isStove));//TO DO check if coroutine is done
         result = outcome;
         isCooking = true;
     }
 
-    private IEnumerator Timer(float duration)
+    private IEnumerator Timer(float duration, bool isStove)
     {
         progressBar.SetActive(true);
         currentTime = duration;
@@ -69,7 +70,9 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         progressBar.SetActive(false);
-        End();
+        if(isStove){
+            End();
+        }
         isCooking = false;
     }
 
@@ -79,6 +82,7 @@ public class GameManager : MonoBehaviour
         if (result < 480)
         {
             displayText("product failed, nothing happend");
+            FailedPanel();
         }
         else if (result > 480 && result < 780)
         {
@@ -87,12 +91,13 @@ public class GameManager : MonoBehaviour
         else if (result > 780)
         {
             displayText("Deadly product, Game over");
+            FailedPanel();
         }
     }
 
-    public void Death()
+    public void FailedPanel()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         deathpanel.SetActive(true);
     }
 
@@ -104,5 +109,11 @@ public class GameManager : MonoBehaviour
     public void displayText(string text)
     {
         textMeshPro.text = text;
+    }
+
+    public void RestartGame()
+    {
+        //isCooking = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

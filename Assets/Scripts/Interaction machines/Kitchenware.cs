@@ -65,7 +65,7 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
         }
 
         float outcome = chance * multiplier;
-        GameManager.instance.StartTimer(cookingDuration, outcome);
+        GameManager.instance.StartTimer(cookingDuration, true, outcome);
         StartCoroutine(clearPlaceholders());
     }
 
@@ -76,7 +76,7 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
             GameManager.instance.Explosion(this.gameObject.transform);
         }
         ingredients[0].Multiplier = ingredients[0].Multiplier * 8;
-        GameManager.instance.StartTimer(cookingDuration);
+        GameManager.instance.StartTimer(cookingDuration, false);
         print("enhance" + ingredients[0].Multiplier);
         StartCoroutine(clearPlaceholders());
     }
@@ -111,18 +111,22 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     public void interact()
     {
+
         if(GameManager.instance.isCooking == false)
         {
             if (isOpen)
             {
                 anim.SetBool("isOpen", false);
-
+                print("Close");
                 Action();
             }
             else
             {
                 anim.SetBool("isOpen", true);
+                print("Open");
             }
+        }else{
+            print("Trying to acces");
         }
         isOpen = !isOpen;
     }

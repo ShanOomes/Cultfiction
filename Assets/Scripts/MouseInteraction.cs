@@ -11,6 +11,7 @@ public class MouseInteraction : MonoBehaviour
     private int draggableMask;
     private int interactionMask;
 
+    private Ray ray;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class MouseInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out RaycastHit hit, 10.0f, draggableMask))
