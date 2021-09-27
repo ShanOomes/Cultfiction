@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Sphere
-  deathChance: 50
+  deathChance: 20
   failureRate: 50
   multiplier: 12
   placeholder: {fileID: 6743342109335591065, guid: 7233c54622700424d935352e5a1a6af9, type: 3}

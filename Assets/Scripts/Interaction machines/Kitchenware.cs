@@ -71,7 +71,8 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     public void enhanceProduct()
     {
-        if (Random.Range(0f,100f) > ingredients[0].deathChance)
+
+        if (Random.Range(0f,100f) < ingredients[0].deathChance)
         {
             GameManager.instance.Explosion(this.gameObject.transform);
         }
@@ -117,16 +118,12 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
             if (isOpen)
             {
                 anim.SetBool("isOpen", false);
-                print("Close");
                 Action();
             }
             else
             {
                 anim.SetBool("isOpen", true);
-                print("Open");
             }
-        }else{
-            print("Trying to acces");
         }
         isOpen = !isOpen;
     }

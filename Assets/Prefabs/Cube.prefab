@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cube
-  deathChance: 75
+  deathChance: 50
   failureRate: 90
   multiplier: 40
   placeholder: {fileID: 1424680053204417421, guid: 8c63ce7cca48b6b47adea1d65d431288, type: 3}

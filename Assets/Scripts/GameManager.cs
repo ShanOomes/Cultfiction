@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void FailedPanel()
     {
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
         deathpanel.SetActive(true);
     }
 
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        //isCooking = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
     }
 }
