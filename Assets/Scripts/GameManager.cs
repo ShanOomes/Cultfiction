@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public bool isCooking;
 
+    public GameObject deathpanel;
+
     private void Awake()
     {
         if(instance == null)
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         loadingBar = progressBar.transform.GetChild(0).GetComponent<Image>();
         isCooking = false;
+        deathpanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -85,6 +88,12 @@ public class GameManager : MonoBehaviour
         {
             displayText("Deadly product, Game over");
         }
+    }
+
+    public void Death()
+    {
+        Time.timeScale = 0;
+        deathpanel.SetActive(true);
     }
 
     public void Explosion(Transform pos)

@@ -31,6 +31,8 @@ public class TraumaInducer : MonoBehaviour
             float stress = (1 - Mathf.Pow(distance01, 2)) * MaximumStress;
             receiver.InduceStress(stress);
         }
+        yield return new WaitForSeconds(1);
+        GameManager.instance.Death();
     }
 
     /* Search for all the particle system in the game objects children */
