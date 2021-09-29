@@ -63,6 +63,21 @@ public class MouseInteraction : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, 10.0f, draggableMask))
+            {
+                if (hit.collider != null)
+                {
+                    Ingredient ingredient = hit.collider.gameObject.GetComponent<Ingredient>();
+                    if (ingredient != null)
+                    {
+                        GameManager.instance.PopUp(ingredient);
+                    }
+                }
+            }
+        }
     }
 
     Vector3 mousePos()

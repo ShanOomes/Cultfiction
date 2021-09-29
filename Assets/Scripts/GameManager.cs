@@ -25,6 +25,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject deathpanel;
 
+    public GameObject popUpBox;
+    //public Animator animator;
+    public TextMeshProUGUI popUp_titel;
+    public TextMeshProUGUI popUp_deatchance;
+    public TextMeshProUGUI popUp_failureRate;
+    public TextMeshProUGUI popUp_multiplier;
+    public TextMeshProUGUI popUp_type;
+
+
+
     private void Awake()
     {
         if(instance == null)
@@ -115,5 +125,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+    }
+
+    public void PopUp(Ingredient ingredient)
+    {
+        popUpBox.SetActive(true);
+        popUp_titel.text = ingredient.Name;
+        popUp_deatchance.text = ingredient.DeathChance.ToString();
+        popUp_failureRate.text = ingredient.FailureRate.ToString();
+        popUp_multiplier.text = ingredient.Multiplier.ToString();
+        popUp_type.text = ingredient.Type.ToString();
     }
 }
