@@ -671,7 +671,7 @@ MonoBehaviour:
   deathChance: 60
   failureRate: 40
   multiplier: 12
-  placeholder: {fileID: 1864742499577446}
+  placeholder: {fileID: 1431372057078534039, guid: a6c62816921b08e49a3295ffb1da0550, type: 3}
   type: 3
 --- !u!1 &1945579784357284
 GameObject:

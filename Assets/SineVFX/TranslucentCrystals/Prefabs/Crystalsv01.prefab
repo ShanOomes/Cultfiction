@@ -73,7 +73,7 @@ MonoBehaviour:
   deathChance: 40
   failureRate: 25
   multiplier: 6
-  placeholder: {fileID: 1011319553682498}
+  placeholder: {fileID: 4987887090895159701, guid: 01be926f92ef74648b7b49c213fa49e4, type: 3}
   type: 3
 --- !u!65 &4366876163558822975
 BoxCollider:
