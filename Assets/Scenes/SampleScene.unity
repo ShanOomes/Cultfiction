@@ -4946,8 +4946,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookingDuration: 0
   listIngredients:
-  - {fileID: 693703580425167332, guid: 06d2a454f9806a345b722c519d92ac2e, type: 3}
-  - {fileID: 1685155687460864933, guid: 637693e838e637b4588b1af8a436adea, type: 3}
+  - {fileID: 1011319553682498, guid: 8ad137f6808375f4e885d60451f0c4fc, type: 3}
+  - {fileID: 1864742499577446, guid: 4aa7f4f0acab60742bea9a9f6a3bb144, type: 3}
   holders:
   - {fileID: 857089900}
   - {fileID: 1503263639}

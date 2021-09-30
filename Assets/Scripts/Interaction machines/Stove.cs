@@ -49,12 +49,12 @@ public class Stove : Kitchenware
                     }
                     else
                     {
-                        GameManager.instance.displayText(ingredient.Name + "not added, not enough space");
+                        GameManager.instance.displayText(ingredient.Name + " not added, not enough space");
                     }
                 }
                 else
                 {
-                    GameManager.instance.displayText(ingredient.Name + "not added, is full!");
+                    GameManager.instance.displayText(ingredient.Name + " not added, stove is full!");
                 }
 
             }
