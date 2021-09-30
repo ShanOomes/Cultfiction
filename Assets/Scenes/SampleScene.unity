@@ -4875,7 +4875,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5886725122310526079, guid: aa542ce8ee9f0a949b16c7a5f7856136, type: 3}
 --- !u!1 &6018796664574856809
@@ -4953,6 +4953,8 @@ MonoBehaviour:
   - {fileID: 1011319553682498, guid: 8ad137f6808375f4e885d60451f0c4fc, type: 3}
   - {fileID: 1864742499577446, guid: 4aa7f4f0acab60742bea9a9f6a3bb144, type: 3}
   - {fileID: 1288543304402976, guid: 67c6e02e204ef6244a8f475a94826851, type: 3}
+  - {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
+  - {fileID: 179448, guid: 41ddecd19696e4b7abfe4584fa7efe68, type: 3}
   holders:
   - {fileID: 857089900}
   - {fileID: 1503263639}

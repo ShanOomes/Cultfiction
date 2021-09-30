@@ -14,12 +14,6 @@ public class Microwave : Kitchenware
         maxIngredients = 1;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override void Action()
     {
         if(AmountOfIngredients() == 1)
