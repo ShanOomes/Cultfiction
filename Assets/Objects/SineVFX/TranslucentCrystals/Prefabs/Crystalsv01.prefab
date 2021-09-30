@@ -70,8 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Blue cystal
-  deathChance: 40
-  failureRate: 15
+  deathChance: 21.78
+  failureRate: 6.8
   multiplier: 6
   placeholder: {fileID: 4987887090895159701, guid: 01be926f92ef74648b7b49c213fa49e4, type: 3}
   type: 3

@@ -668,9 +668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Pink crystal
-  deathChance: 45
-  failureRate: 25
-  multiplier: 12
+  deathChance: 23.4
+  failureRate: 10.6
+  multiplier: 10
   placeholder: {fileID: 1431372057078534039, guid: a6c62816921b08e49a3295ffb1da0550, type: 3}
   type: 3
 --- !u!1 &1945579784357284

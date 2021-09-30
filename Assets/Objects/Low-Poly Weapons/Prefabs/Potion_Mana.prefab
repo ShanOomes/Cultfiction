@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 'Blue vial '
-  deathChance: 30
-  failureRate: 10
+  deathChance: 19.2
+  failureRate: 7.1
   multiplier: 3
   placeholder: {fileID: 8036652684511576567, guid: aa1f8589230e40c4497c8e4bb2a46158, type: 3}
   type: 3

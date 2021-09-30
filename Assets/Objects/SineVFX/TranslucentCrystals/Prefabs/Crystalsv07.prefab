@@ -54,8 +54,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Kryptonite crystal
-  deathChance: 75
-  failureRate: 30
+  deathChance: 50
+  failureRate: 5.9
   multiplier: 24
   placeholder: {fileID: 5387523805846800682, guid: 253ad6ee1a65b2043b8a1731f149fb81, type: 3}
   type: 3
