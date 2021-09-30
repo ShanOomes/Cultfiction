@@ -101,16 +101,16 @@ public class GameManager : MonoBehaviour
     private void End()
     {
         print("Cooked: " + result);
-        if (result < 265)
+        if (result < 230)
         {
             displayText("product failed, nothing happend");
             FailedPanel();
         }
-        else if (result > 265 && result < 600)
+        else if (result > 230 && result < 400)
         {
             video_ending.GetComponent<VideoPlayer>().Play();
         }
-        else if (result > 600)
+        else if (result > 400)
         {
             displayText("Deadly product, Game over");
             FailedPanel();

@@ -57,9 +57,10 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
         {
             if (Random.Range(0f, 100f) < ingredients[i].FailureRate)
             {
-                multiplier += ingredients[i].Multiplier;
                 GameManager.instance.displayText("Failed: " + ingredients[i].Name);
                 print("Failed: " + ingredients[i].Name);
+            }else{
+                multiplier += ingredients[i].Multiplier;
             }
         }
 
