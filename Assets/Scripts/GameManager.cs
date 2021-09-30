@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject panel;
 
+    [Header("Audio")]
+    public AudioSource audioMicrowave;
+    public AudioSource audioStove;
+
     private void Awake()
     {
         if(instance == null)
@@ -68,6 +72,13 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Timer(float duration, bool isStove)
     {
+        if(isStove)
+        {
+            audioStove.Play(0);
+        }else
+        {
+            audioMicrowave.Play(0);
+        }
         progressBar.SetActive(true);
         currentTime = duration;
         while(currentTime > 0)
@@ -80,6 +91,9 @@ public class GameManager : MonoBehaviour
         progressBar.SetActive(false);
         if(isStove){
             End();
+            audioStove.Pause();
+        }else{
+            audioMicrowave.Pause();
         }
         isCooking = false;
     }
@@ -87,16 +101,16 @@ public class GameManager : MonoBehaviour
     private void End()
     {
         print("Cooked: " + result);
-        if (result < 480)
+        if (result < 265)
         {
             displayText("product failed, nothing happend");
             FailedPanel();
         }
-        else if (result > 480 && result < 780)
+        else if (result > 265 && result < 600)
         {
             video_ending.GetComponent<VideoPlayer>().Play();
         }
-        else if (result > 780)
+        else if (result > 600)
         {
             displayText("Deadly product, Game over");
             FailedPanel();
