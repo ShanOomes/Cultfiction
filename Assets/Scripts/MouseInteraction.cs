@@ -32,7 +32,6 @@ public class MouseInteraction : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    //Debug.Log("Hit: " + hit.collider.name);
                     selectedObj = hit.collider.gameObject;
                     isDragging = true;
                 }
@@ -54,7 +53,6 @@ public class MouseInteraction : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    //Debug.Log("Hit: " + hit.collider.name);
                     IInteractionBehavior behavior = hit.collider.gameObject.GetComponent<IInteractionBehavior>();
                     if(behavior != null)
                     {

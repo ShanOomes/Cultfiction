@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -181,9 +181,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "You\u2019re a drug addict with a functional kitchen and kitchen appliances.
-    Cooking with the most weird and mysterious ingredients to cook your own drugs.\r\nTry
-    to overdose yourself with your own product, but be careful for all the possible
-    dangers. Living on the edge\r\n"
+    Cooking with weird and mysterious ingredients, your own drugs.\r\nTry to overdose
+    yourself with your own product, but be careful for all the possible dangers.
+    Living on the edge\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d37822225a9273946b106c19f5b55e0d, type: 2}
   m_sharedMaterial: {fileID: 3366517336959425600, guid: d37822225a9273946b106c19f5b55e0d, type: 2}
@@ -3793,7 +3793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117742776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.109, y: 0, z: -0.145}
+  m_LocalPosition: {x: 0.109, y: -0.0638, z: -0.0986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2166388293084114134}

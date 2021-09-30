@@ -52,20 +52,18 @@ public abstract class Kitchenware : MonoBehaviour, IInteractionBehavior
 
     public void cookingTime()
     {
-        float chance = 0;
         float multiplier = 0;
         for (int i = 0; i < ingredients.Count; i++)
         {
-            //chance += Random.Range(ingredients[i].DeathChanceMin, ingredients[i].DeathChanceMax);
             if (Random.Range(0f, 100f) < ingredients[i].FailureRate)
             {
                 multiplier += ingredients[i].Multiplier;
                 GameManager.instance.displayText("Failed: " + ingredients[i].Name);
+                print("Failed: " + ingredients[i].Name);
             }
         }
 
-        float outcome = chance * multiplier;
-        GameManager.instance.StartTimer(cookingDuration, true, outcome);
+        GameManager.instance.StartTimer(cookingDuration, true, multiplier);
         StartCoroutine(clearPlaceholders());
     }
 

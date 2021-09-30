@@ -22,18 +22,9 @@ public class Fridge : Kitchenware
             {
                 int randomIndex = Random.Range(0, listIngredients.Count);
                 GameObject obj = listIngredients[randomIndex].gameObject;
-                
-                //Ingredient ing = obj.AddComponent<Ingredient>();
-                //ing.Set("Test", 10f, 20f, 5f, 15, test, Type.Stove);
 
                 Instantiate(obj, holders[i].transform.position, Quaternion.identity);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

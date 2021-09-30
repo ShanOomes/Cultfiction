@@ -59,12 +59,6 @@ public class GameManager : MonoBehaviour
         deathpanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void StartTimer(float duration, bool isStove, float outcome = 0)
     {
         StartCoroutine(Timer(duration, isStove));//TO DO check if coroutine is done
@@ -100,7 +94,7 @@ public class GameManager : MonoBehaviour
         }
         else if (result > 480 && result < 780)
         {
-            //video_ending.GetComponent<VideoPlayer>().Play();
+            video_ending.GetComponent<VideoPlayer>().Play();
         }
         else if (result > 780)
         {
@@ -146,7 +140,7 @@ public class GameManager : MonoBehaviour
         popUp_multiplier.text = "Multiplier: " + ingredient.Multiplier.ToString();
         popUp_type.text = "Type: " + ingredient.Type.ToString();
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
 
         popUpBox.SetActive(false);
     }

@@ -13,12 +13,6 @@ public class Stove : Kitchenware
         maxIngredients = 3;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override void Action()
     {
         if (AmountOfIngredients() >= 2)//are there atleast 2 ingredients in array
@@ -38,7 +32,7 @@ public class Stove : Kitchenware
         if(other.gameObject != null && kitchenWareOpened() == true)//check is not null, if stove is open
         {
             Ingredient ingredient = other.gameObject.GetComponent<Ingredient>();
-            if(ingredient.type.ToString() == "Stove")
+            if(ingredient.type.ToString() == "Stove" || ingredient.type.ToString() == "All")
             {
                 if (IsMaxFilled())
                 {

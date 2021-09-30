@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Blue cystal
   deathChance: 40
-  failureRate: 25
+  failureRate: 15
   multiplier: 6
   placeholder: {fileID: 4987887090895159701, guid: 01be926f92ef74648b7b49c213fa49e4, type: 3}
   type: 3
@@ -186,7 +186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4354133497527038
 Transform:
   m_ObjectHideFlags: 0
@@ -213,8 +213,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.50735295, g: 0.73619545, b: 1, a: 1}
-  m_Intensity: 0.3
-  m_Range: 10
+  m_Intensity: 0.1
+  m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
