@@ -73,7 +73,7 @@ public class MouseInteraction : MonoBehaviour
                     Ingredient ingredient = hit.collider.gameObject.GetComponent<Ingredient>();
                     if (ingredient != null)
                     {
-                        GameManager.instance.PopUp(ingredient);
+                        GameManager.instance.setPopUp(ingredient);
                     }
                 }
             }

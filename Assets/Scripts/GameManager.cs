@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI textMeshPro;
 
+    [Header("Progress-bar")]
     public GameObject progressBar;
     public TextMeshProUGUI durationText;
+
     private Image loadingBar;
     private float currentTime;
     private float result;
@@ -23,17 +25,18 @@ public class GameManager : MonoBehaviour
     public GameObject explosion;
     public bool isCooking;
 
+    [Header("Death panel")]
     public GameObject deathpanel;
 
+    [Header("Popup")]
     public GameObject popUpBox;
-    //public Animator animator;
     public TextMeshProUGUI popUp_titel;
     public TextMeshProUGUI popUp_deatchance;
     public TextMeshProUGUI popUp_failureRate;
     public TextMeshProUGUI popUp_multiplier;
     public TextMeshProUGUI popUp_type;
 
-
+    public GameObject panel;
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        panel.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()
@@ -127,13 +131,28 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void PopUp(Ingredient ingredient)
+    public void setPopUp(Ingredient ing)
+    {
+        StartCoroutine(PopUp(ing));
+    }
+
+    private IEnumerator PopUp(Ingredient ingredient)
     {
         popUpBox.SetActive(true);
+
         popUp_titel.text = ingredient.Name;
-        popUp_deatchance.text = ingredient.DeathChance.ToString();
-        popUp_failureRate.text = ingredient.FailureRate.ToString();
-        popUp_multiplier.text = ingredient.Multiplier.ToString();
-        popUp_type.text = ingredient.Type.ToString();
+        popUp_deatchance.text = "Death Chance: " + ingredient.DeathChance.ToString();
+        popUp_failureRate.text = "Failure rate: " + ingredient.FailureRate.ToString();
+        popUp_multiplier.text = "Multiplier: " + ingredient.Multiplier.ToString();
+        popUp_type.text = "Type: " + ingredient.Type.ToString();
+
+        yield return new WaitForSeconds(3);
+
+        popUpBox.SetActive(false);
+    }
+
+    public void PanelOff()
+    {
+        panel.SetActive(false);
     }
 }
