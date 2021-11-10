@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Magma potion
-  deathChance: 33.26
+  deathChance: 12
   failureRate: 14
   multiplier: 30.6
   placeholder: {fileID: 4682004546565144926, guid: 9209dfabcc3827349ad3741be3439d99, type: 3}
