@@ -1,2 +1,2 @@
-# Cultfiction
-Schoolproject
+# Cultfiction - Cooking game
+
